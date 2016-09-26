@@ -1,3 +1,4 @@
-# metro_center
+# MetroCenter
 
-a [Sails](http://sailsjs.org) application
+Institute University Project º at Universidad Metropolitana, Caracas Venezuela.
+Jose Raffalli, Asher Kleiman, Rocco Tarantino, Reynaldo Quintero All rights reserved. 

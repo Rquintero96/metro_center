@@ -32,9 +32,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+  '/': {view: 'homepage'}// Temporalmente desactive el homepage
+  
+  'GET /signup' : {view: 'sigup'}
 
   /***************************************************************************
   *                                                                          *

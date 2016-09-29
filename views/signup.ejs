@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
 
+    <style type="text/css">
+      .form-signin {padding-left: 350px; padding-right: 350px; }
+      
+    </style>
+
+    <!--Added this so the client has access to the csrf tag and it's grabbed first service side on every page -->
+    <script type="text/javascript">
+    window.SAILS_LOCALS = { _csrf: "<%= _csrf %>" };
+    </script>
   </head>
 
    <body ng-app="ModuloDeRegistro" ng-controller="ControladorDeRegistro" ng-cloak>
@@ -30,7 +39,7 @@
           </button>
 
           <!-- Nombre de la app -->
-          <a class="navbar-brand" href="/#">MetroCenter</a>
+          <a class="navbar-brand" href="/#"><img src="images/MetrocenterLogoForPage.png" id="MetroCenterImg"></a>
           <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
 
 
@@ -40,7 +49,7 @@
 
               <!-- EMAIL -->
               <div class="form-group">
-                  <input ng-model="loginForm.email" type="text" placeholder="Email/Carnet" name="email" class="form-control">
+                  <input ng-model="loginForm.email" type="text" placeholder="Email / Carnet" name="email" class="form-control">
               </div>
 
               <!-- CONTRASEÑA -->
@@ -50,9 +59,9 @@
 
               <!-- SUBMIT -->
               <button type="submit" class="btn btn-success">
-                <span ng-show="!loginForm.loading">Sign in</span>
+                <span ng-show="!loginForm.loading">Entrar</span>
                 <span ng-show="loginForm.loading" class="fa fa-spinner"></span>
-                <span ng-show="loginForm.loading">Signing up...</span>
+                <span ng-show="loginForm.loading">Entrando...</span>
               </button>
               <input type="hidden" name="_csrf" value="<%= _csrf %>" />
           </form>
@@ -132,7 +141,7 @@
 
         <div class="control-group form-group col-md-6">
           <label>Confirmar Contraseña</label>
-          <input type="password" class="form-control" placeholder="una vez mas por favor :)" name="confirmation" ng-model="signupForm.confirmPassword" required>
+          <input type="password" class="form-control" placeholder="Una vez mas por favor :D" name="confirmation" ng-model="signupForm.confirmPassword" required>
           <span class="help-block has-error" ng-if="signup.confirmation.$dirty">
             <span ng-show="signup.password.$error.compareTo">Las contraseñas no son iguales</span>
             <span ng-show="signup.confirmation.$error.required">Se debe confirmar la contraseña</span>

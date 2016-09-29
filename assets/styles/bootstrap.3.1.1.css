@@ -3951,7 +3951,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand:focus {
   text-decoration: none;
 }
-.navbar-brand > img {
+.navbar-brand > img { 
+  position: absolute; 
+  width: 250px; 
+  height: 125px;
+  margin-top: -50px;
   display: block;
 }
 @media (min-width: 768px) {
@@ -4161,7 +4165,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
+  background-color: #f00;
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {

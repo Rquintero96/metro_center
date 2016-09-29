@@ -1,0 +1,1 @@
+angular.module('ModuloDeRegistro', ['toastr','compareTo']);

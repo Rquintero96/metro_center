@@ -1,1 +1,177 @@
-<h1> Sign Up </h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Suscripcion</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/angular-toastr.css">
+    <link rel="stylesheet" href="/styles/bootstrap.3.1.1.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <!--STYLES END-->
+
+  </head>
+
+   <body ng-app="ModuloDeRegistro" ng-controller="ControladorDeRegistro" ng-cloak>
+    <div class="container-fluid">
+
+      <!-- Crea la barra de navegacion -->
+        <nav class="navbar navbar-default navbar-inverse">
+      
+          <!-- Manera de Bootstrap para colapasar el menu de navegacion -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+      
+            <!-- Lineas que salen cuando el menu se colapsa-->
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <!-- Nombre de la app -->
+          <a class="navbar-brand" href="/#">MetroCenter</a>
+          <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+
+
+          <!-- ******************Simple Formulario de LogIn ****************** -->
+          <!-- LOGIN FORM -->  
+          <form ng-submit="submitLoginForm()" class="navbar-form navbar-right">
+
+              <!-- EMAIL -->
+              <div class="form-group">
+                  <input ng-model="loginForm.email" type="text" placeholder="Email/Carnet" name="email" class="form-control">
+              </div>
+
+              <!-- CONTRASEÑA -->
+              <div class="form-group">
+                  <input ng-model="loginForm.password" type="password" placeholder="Contraseña" name="password" class="form-control">
+              </div>
+
+              <!-- SUBMIT -->
+              <button type="submit" class="btn btn-success">
+                <span ng-show="!loginForm.loading">Sign in</span>
+                <span ng-show="loginForm.loading" class="fa fa-spinner"></span>
+                <span ng-show="loginForm.loading">Signing up...</span>
+              </button>
+              <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+          </form>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ******************Complejo Formulario de Signup extraido de internet ****************** -->
+
+    <!-- SIGNUP FORM --> 
+    <form ng-submit="submitSignupForm()" id="sign-up-form" class="form-signin" name="signup">
+      <h2 class="form-signin-heading">Registrarse:</h2>
+      <div class="row">
+
+        <!-- NOMBRE -->
+
+        <!-- checking whether the form "signup" with the "name" property is both $invalid AND $dirty.  If it is
+        insert the "has-error" class on the input field (i.e. insert a red border around the input field)
+        -->
+        <div class="control-group form-group col-md-12"
+        ng-class="{'has-error':signup.name.$invalid &&
+                              signup.name.$dirty}">
+          <label>Nombre Completo</label>
+
+          <!-- Es requerido y tiene un max de 25 caracteres-->
+          <input type="text" class="form-control" placeholder="Ej: Luis Raffalli" name="name" ng-model="signupForm.name" ng-maxlength="50" required>
+
+          <!-- If signup.name.$dirty is true, show the message depending upon the particular properties truthiness (e.g. required
+          and/or maxlength) -->
+          <span class="help-block has-error" ng-if="signup.name.$dirty">
+            <span ng-show="signup.name.$error.required">El nombre es un campo obligatorio</span>
+            <span ng-show="signup.name.$error.maxlength">No puede contener mas de 50 caracteres</span>
+          </span>
+        </div>
+
+        <!-- Alias -->
+
+        <div class="control-group form-group col-md-12"
+          ng-class="{'has-error':signup.title.$invalid &&
+                                signup.title.$dirty}">
+          <label>Usuario</label>
+          <input type="text" class="form-control" placeholder="Ej: Jraffalli" name="title" ng-model="signupForm.title" ng-maxlength="50" required>
+          <span class="help-block has-error" ng-if="signup.title.$dirty">
+            <span ng-show="signup.title.$error.required">Usuario requerido</span>
+            <span ng-show="signup.title.$error.maxlength">No puede contener mas de 50 caracteres</span>
+          </span>
+        </div>
+
+        <!-- Email -->
+
+        <div class="control-group form-group col-md-12"
+        ng-class="{'has-error':signup.email.$invalid &&
+                              signup.email.$dirty}">
+          <label>Direccion de Correo Electronico</label>
+          <input type="email" class="form-control" placeholder="rmatienzo@gmail.com" name="email" ng-model="signupForm.email" required >
+          <span class="help-block has-error" ng-if="signup.email.$dirty">
+            <span ng-show="signup.email.$error.required">Email es requerido.</span>
+            <span ng-show="signup.email.$error.email">No es una direccion de correo valida</span>
+          </span>
+        </div>
+
+        <!-- Contraseña -->
+
+        <div class="control-group form-group col-md-6"
+        ng-class="{'has-error':signup.password.$invalid &&
+                              signup.password.$dirty}">
+          <label>Seleccione una contraseña</label>
+          <!-- Added the compareTo directive that compares the passowrds -->
+          <input type="password" class="form-control" placeholder="Por lo menos de 6 caracteres" name="password" ng-model="signupForm.password" id="password" required ng-minlength="6" compare-to="signupForm.confirmPassword" >
+          <span class="help-block has-error" ng-if="signup.password.$dirty">
+            <span ng-show="signup.password.$error.required">Se requiere una contraseña</span>
+            <span ng-show="signup.password.$error.minlength">De por lo menos 6 caracteres!</span>
+          </span>
+        </div>
+
+        <!-- Confirmar Contraseñas -->
+
+        <div class="control-group form-group col-md-6">
+          <label>Confirmar Contraseña</label>
+          <input type="password" class="form-control" placeholder="una vez mas por favor :)" name="confirmation" ng-model="signupForm.confirmPassword" required>
+          <span class="help-block has-error" ng-if="signup.confirmation.$dirty">
+            <span ng-show="signup.password.$error.compareTo">Las contraseñas no son iguales</span>
+            <span ng-show="signup.confirmation.$error.required">Se debe confirmar la contraseña</span>
+          </span>
+        </div>
+      </div>
+
+      <br/>
+
+      <!-- Se desabilita el boton hasta completar el forum -->
+      <button class="btn btn-primary btn-lg btn-block" type="submit" ng-disabled="signup.$invalid">
+        <span ng-show="!signupForm.loading">Crear cuenta</span>
+        <span class="overlord-loading-spinner fa fa-spinner" ng-show="signupForm.loading" ></span>
+        <span ng-show="signupForm.loading">Creando cuenta...</span>
+      </button>
+
+      <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    </form>
+
+
+
+    <div class="container">
+        <hr>
+        <footer class="footer pull-right">
+            <div>
+                <a href="http://sailsjs.com/">http://www.unimet.edu.ve/</a>
+                <div>MetroCenter todos los derechos reservados</div>
+            </div>
+        </footer>
+    </div>
+
+    
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/angular.js"></script>
+    <script src="/js/dependencies/toastr.js"></script>
+    <script src="/js/dependencies/compareTo.js"></script>
+    <script src="/js/public/signup/ModuloDeRegistro.js"></script>
+    <script src="/js/public/signup/ControladorDeRegistro.js"></script>
+    <!--SCRIPTS END-->
+  </body>
+</html>

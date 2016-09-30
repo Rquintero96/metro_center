@@ -34,7 +34,8 @@ module.exports.routes = {
 
   //'/': {view: 'homepage'} // Temporalmente desactive el homepage
   
-  'GET /signup' : {view: 'signup'}
+  'GET /signup' : {view: 'signup'},
+  'POST /signup': 'UserController.create'
 
   /***************************************************************************
   *                                                                          *

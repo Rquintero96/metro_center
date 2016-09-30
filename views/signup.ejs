@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
 
-    <style type="text/css">
-      .form-signin {padding-left: 350px; padding-right: 350px; }
+    <!-- <style type="text/css">
+      .form-signin {padding-left: -100px; padding-right: -100px; }
       
-    </style>
+    </style> -->
 
     <!--Added this so the client has access to the csrf tag and it's grabbed first service side on every page -->
     <script type="text/javascript">
@@ -72,7 +72,7 @@
     <!-- ******************Complejo Formulario de Signup extraido de internet ****************** -->
 
     <!-- SIGNUP FORM -->
-    <div id="FormularioSignup"> 
+    
     <form ng-submit="submitSignupForm()" id="sign-up-form" class="form-signin" name="signup">
       <h2 class="form-signin-heading">Registro:</h2>
       <div class="row">
@@ -129,12 +129,12 @@
         <div class="control-group form-group col-md-6"
         ng-class="{'has-error':signup.password.$invalid &&
                               signup.password.$dirty}">
-          <label>Seleccione una contraseña</label>
+          <label>Contraseña</label>
           <!-- Added the compareTo directive that compares the passowrds -->
-          <input type="password" class="form-control" placeholder="Por lo menos de 6 caracteres" name="password" ng-model="signupForm.password" id="password" required ng-minlength="6" compare-to="signupForm.confirmPassword" >
+          <input type="password" class="form-control" placeholder="De 6 caracteres minimo" name="password" ng-model="signupForm.password" id="password" required ng-minlength="6" compare-to="signupForm.confirmPassword" >
           <span class="help-block has-error" ng-if="signup.password.$dirty">
             <span ng-show="signup.password.$error.required">Se requiere una contraseña</span>
-            <span ng-show="signup.password.$error.minlength">De por lo menos 6 caracteres!</span>
+            <span ng-show="signup.password.$error.minlength">Mas 6 caracteres!</span>
           </span>
         </div>
 
@@ -142,7 +142,7 @@
 
         <div class="control-group form-group col-md-6">
           <label>Confirmar Contraseña</label>
-          <input type="password" class="form-control" placeholder="Una vez mas por favor :D" name="confirmation" ng-model="signupForm.confirmPassword" required>
+          <input type="password" class="form-control" placeholder="Una vez mas plz :D" name="confirmation" ng-model="signupForm.confirmPassword" required>
           <span class="help-block has-error" ng-if="signup.confirmation.$dirty">
             <span ng-show="signup.password.$error.compareTo">Las contraseñas no son iguales</span>
             <span ng-show="signup.confirmation.$error.required">Se debe confirmar la contraseña</span>
@@ -161,7 +161,7 @@
 
       <input type="hidden" name="_csrf" value="<%= _csrf %>" />
     </form>
-</div>
+
 
 
     <div class="container">

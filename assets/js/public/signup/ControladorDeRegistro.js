@@ -6,13 +6,13 @@ angular.module('ModuloDeRegistro').controller('ControladorDeRegistro', ['$scope'
 	}
 
 
-	$scope.submitSignupForm= function () {
+	$scope.submitSignupForm= function () { // Esta funcion es la que es llamada una vez se llene el formulario signup
 
 		$scope.signupForm.loading = true;
 		
 		$http.post('/signup', {
 			nombre: $scope.signupForm.name,
-			usuario: $scope.signupForm.title,
+			apellido: $scope.signupForm.title,
 			email: $scope.signupForm.email,
 			contraseña: $scope.signupForm.password
 		})

@@ -77,7 +77,7 @@
       <h2 class="form-signin-heading">Registro:</h2>
       <div class="row">
 
-        <!-- NOMBRE -->
+        <!-- Nombre -->
 
         <!-- checking whether the form "signup" with the "name" property is both $invalid AND $dirty.  If it is
         insert the "has-error" class on the input field (i.e. insert a red border around the input field)
@@ -85,29 +85,29 @@
         <div class="control-group form-group col-md-12"
         ng-class="{'has-error':signup.name.$invalid &&
                               signup.name.$dirty}">
-          <label>Nombre Completo</label>
+          <label>Nombre</label>
 
-          <!-- Es requerido y tiene un max de 25 caracteres-->
-          <input type="text" class="form-control" placeholder="Ej: Luis Raffalli" name="name" ng-model="signupForm.name" ng-maxlength="50" required>
+          <!-- Es requerido y tiene un max de 20 caracteres-->
+          <input type="text" class="form-control" placeholder="Ej: José" name="name" ng-model="signupForm.name" ng-maxlength="20" required>
 
           <!-- If signup.name.$dirty is true, show the message depending upon the particular properties truthiness (e.g. required
           and/or maxlength) -->
           <span class="help-block has-error" ng-if="signup.name.$dirty">
-            <span ng-show="signup.name.$error.required">El nombre es un campo obligatorio</span>
-            <span ng-show="signup.name.$error.maxlength">No puede contener mas de 50 caracteres</span>
+            <span ng-show="signup.name.$error.required">El nombre es un campo obligatorio.</span>
+            <span ng-show="signup.name.$error.maxlength">No puede contener más de 50 caracteres.</span>
           </span>
         </div>
 
-        <!-- Alias -->
+        <!-- Apellido -->
 
         <div class="control-group form-group col-md-12"
           ng-class="{'has-error':signup.title.$invalid &&
                                 signup.title.$dirty}">
-          <label>Usuario</label>
-          <input type="text" class="form-control" placeholder="Ej: Jraffalli" name="title" ng-model="signupForm.title" ng-maxlength="50" required>
+          <label>Apellido</label>
+          <input type="text" class="form-control" placeholder="Ej: Raffalli" name="title" ng-model="signupForm.title" ng-maxlength="20" required>
           <span class="help-block has-error" ng-if="signup.title.$dirty">
-            <span ng-show="signup.title.$error.required">Usuario requerido</span>
-            <span ng-show="signup.title.$error.maxlength">No puede contener mas de 50 caracteres</span>
+            <span ng-show="signup.title.$error.required">Apellido es requerido.</span>
+            <span ng-show="signup.title.$error.maxlength">No puede contener más de 20 caracteres.</span>
           </span>
         </div>
 
@@ -116,11 +116,11 @@
         <div class="control-group form-group col-md-12"
         ng-class="{'has-error':signup.email.$invalid &&
                               signup.email.$dirty}">
-          <label>Direccion de Correo Electronico</label>
-          <input type="email" class="form-control" placeholder="rmatienzo@gmail.com" name="email" ng-model="signupForm.email" required >
+          <label>Dirección de Correo Electrónico</label>
+          <input type="email" class="form-control" placeholder="Ej: rmatienzo@gmail.com" name="email" ng-model="signupForm.email" required >
           <span class="help-block has-error" ng-if="signup.email.$dirty">
             <span ng-show="signup.email.$error.required">Email es requerido.</span>
-            <span ng-show="signup.email.$error.email">No es una direccion de correo valida</span>
+            <span ng-show="signup.email.$error.email">No es una dirección de correo válida</span>
           </span>
         </div>
 
@@ -131,10 +131,10 @@
                               signup.password.$dirty}">
           <label>Contraseña</label>
           <!-- Added the compareTo directive that compares the passowrds -->
-          <input type="password" class="form-control" placeholder="De 6 caracteres minimo" name="password" ng-model="signupForm.password" id="password" required ng-minlength="6" compare-to="signupForm.confirmPassword" >
+          <input type="password" class="form-control" placeholder="De 6 caracteres mínimo" name="password" ng-model="signupForm.password" id="password" required ng-minlength="6" compare-to="signupForm.confirmPassword" >
           <span class="help-block has-error" ng-if="signup.password.$dirty">
-            <span ng-show="signup.password.$error.required">Se requiere una contraseña</span>
-            <span ng-show="signup.password.$error.minlength">Mas 6 caracteres!</span>
+            <span ng-show="signup.password.$error.required">Se requiere una contraseña.</span>
+            <span ng-show="signup.password.$error.minlength">Más 6 caracteres!.</span>
           </span>
         </div>
 
@@ -142,10 +142,10 @@
 
         <div class="control-group form-group col-md-6">
           <label>Confirmar Contraseña</label>
-          <input type="password" class="form-control" placeholder="Una vez mas plz :D" name="confirmation" ng-model="signupForm.confirmPassword" required>
+          <input type="password" class="form-control" placeholder="Una vez más plz :D" name="confirmation" ng-model="signupForm.confirmPassword" required>
           <span class="help-block has-error" ng-if="signup.confirmation.$dirty">
-            <span ng-show="signup.password.$error.compareTo">Las contraseñas no son iguales</span>
-            <span ng-show="signup.confirmation.$error.required">Se debe confirmar la contraseña</span>
+            <span ng-show="signup.password.$error.compareTo">Las contraseñas no son iguales!.</span>
+            <span ng-show="signup.confirmation.$error.required">Se debe confirmar la contraseña.</span>
           </span>
         </div>
       </div>

@@ -18,6 +18,7 @@ angular.module('ModuloDeRegistro').controller('ControladorDeRegistro', ['$scope'
 		})
 		.then(function onSuccess(sailsResponse){
 			window.location = '/user';
+			
 
 		})
 		.catch(function onError(sailsResponse){
